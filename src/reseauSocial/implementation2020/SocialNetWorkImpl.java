@@ -57,7 +57,7 @@ public class SocialNetWorkImpl<MemberInterface> implements SocialNetworkInterfac
 
 	@Override
 	public void relate(Strength force, MemberInterface member, MemberInterface friend) {
-		graphe.ajouterArc((Member) member, friend, force);
+		graphe.ajouterArc((Member) member, (Member) friend, force.getValue());
 	}
 
 	@Override
