@@ -9,6 +9,7 @@ import facebookGhost.FacebookGhostNetwork;
 public class SocialNetworkImpl<MemberInterface> implements SocialNetworkInterface<MemberInterface> {
 
 	ArrayList<MemberInterface> members = new ArrayList<MemberInterface>();
+	String name;
 	
 	@Override
 	public MemberInterface getMember(String identifier) {
@@ -22,19 +23,16 @@ public class SocialNetworkImpl<MemberInterface> implements SocialNetworkInterfac
 
 	@Override
 	public Collection<MemberInterface> getMembers() {
-		// TODO Auto-generated method stub
-		return null;
+		return members;
 	}
 
 	@Override
 	public void addMember(MemberInterface membre) {
-		// TODO Auto-generated method stub
-		
+		members.add(membre);
 	}
 
 	@Override
 	public MemberInterface addMember(String ident, FacebookGhostNetwork fg) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
