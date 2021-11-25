@@ -1,4 +1,6 @@
-package reseauSocial.core;
+package reseauSocial.implementation2020;
+
+import reseauSocial.core.MemberInterface;
 
 public class Member implements MemberInterface{
 
