@@ -7,20 +7,18 @@ public class Member implements MemberInterface{
 	
 	@Override
 	public String getLocation() {
-		// TODO Auto-generated method stub
-		return null;
+		return localisation;
 	}
 
 	@Override
 	public void setLocation(String s) {
-		// TODO Auto-generated method stub
+		localisation = s;
 		
 	}
 
 	@Override
 	public String getName() {
-		// TODO Auto-generated method stub
-		return null;
+		return nom;
 	}
 
 }
