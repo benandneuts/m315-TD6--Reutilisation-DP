@@ -13,6 +13,10 @@ public class SocialNetWorkImpl<MemberInterface> implements SocialNetworkInterfac
 	ArrayList<MemberInterface> members = new ArrayList<MemberInterface>();
 	String name;
 	
+	public SocialNetWorkImpl(String name) {
+		this.name = name;
+	}
+	
 	@Override
 	public MemberInterface getMember(String identifier) {
 		for(MemberInterface m : members) {
