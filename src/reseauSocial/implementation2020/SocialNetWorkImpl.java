@@ -5,16 +5,22 @@ import java.util.Collection;
 import java.util.Set;
 
 import facebookGhost.FacebookGhostNetwork;
+import grapheSimple.GrapheSimple;
+import grapheX.Sommet;
 import reseauSocial.core.SocialNetworkInterface;
 import reseauSocial.core.Strength;
 
+
 public class SocialNetWorkImpl<MemberInterface> implements SocialNetworkInterface<MemberInterface> {
 
-	ArrayList<MemberInterface> members = new ArrayList<>();
+	ArrayList<MemberInterface> members;
 	String name;
+	GrapheSimple graphe;
 	
 	public SocialNetWorkImpl(String name) {
 		this.name = name;
+		graphe = new GrapheSimple();
+		members = new ArrayList<>();
 	}
 	
 	@Override
@@ -35,6 +41,7 @@ public class SocialNetWorkImpl<MemberInterface> implements SocialNetworkInterfac
 	@Override
 	public void addMember(MemberInterface membre) {
 		members.add(membre);
+		graphe.ajouterSommet((Member) membre);
 	}
 
 	@Override
@@ -50,7 +57,7 @@ public class SocialNetWorkImpl<MemberInterface> implements SocialNetworkInterfac
 
 	@Override
 	public void relate(Strength force, MemberInterface member, MemberInterface friend) {
-		
+		graphe.ajouterArc((Member) member, friend, force);
 	}
 
 	@Override
