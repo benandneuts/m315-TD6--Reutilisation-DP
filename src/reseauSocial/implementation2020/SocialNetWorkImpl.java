@@ -10,7 +10,7 @@ import reseauSocial.core.Strength;
 
 public class SocialNetWorkImpl<MemberInterface> implements SocialNetworkInterface<MemberInterface> {
 
-	Set<MemberInterface> members = new Set<>();
+	Set<MemberInterface> members;
 	String name;
 	
 	public SocialNetWorkImpl(String name) {
