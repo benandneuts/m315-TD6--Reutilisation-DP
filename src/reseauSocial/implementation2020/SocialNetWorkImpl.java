@@ -68,7 +68,7 @@ public class SocialNetWorkImpl<MemberInterface> implements SocialNetworkInterfac
 
 	@Override
 	public int distance(MemberInterface member1, MemberInterface member2) {
-		return graphe.cheminLePlusCourt((Member) member1, (Member) member2).size();
+		return graphe.cheminLePlusCourt((Member) member1, (Member) member2).distance();
 	}
 
 }
