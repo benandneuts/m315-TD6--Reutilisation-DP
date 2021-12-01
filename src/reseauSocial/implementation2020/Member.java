@@ -6,6 +6,7 @@ import reseauSocial.core.MemberInterface;
 public class Member extends Sommet implements MemberInterface {
 
 	String localisation;
+	public static final String DEFAULT_LOCATION = "unspecified";
 	
 	public Member(String nom) {
 		super(nom);
@@ -19,7 +20,6 @@ public class Member extends Sommet implements MemberInterface {
 	@Override
 	public void setLocation(String s) {
 		localisation = s;
-		
 	}
 
 	@Override
