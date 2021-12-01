@@ -167,10 +167,10 @@ public class ThirdTests{
 		//((SocialNetWorkImpl)iutRS).addPropertyChangeListener(snoop);
 		
 		//Facultatif
-		Member megara = iutRS.addMember("Mégara");
-		assertEquals(Member.DEFAULT_LOCATION , megara.getLocation());
-        fg.addUser("Mégara", "megara fut l'épouse d'Hercule","Thèbes");
-        assertEquals("Thèbes" , megara.getLocation());
+//		Member megara = iutRS.addMember("Mégara");
+//		assertEquals(Member.DEFAULT_LOCATION , megara.getLocation());
+//        fg.addUser("Mégara", "megara fut l'épouse d'Hercule","Thèbes");
+//        assertEquals("Thèbes" , megara.getLocation());
 
 	}
 }
