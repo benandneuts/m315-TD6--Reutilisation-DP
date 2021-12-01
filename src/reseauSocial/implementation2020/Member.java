@@ -19,7 +19,6 @@ public class Member extends Sommet implements MemberInterface {
 	@Override
 	public void setLocation(String s) {
 		localisation = s;
-		
 	}
 
 	@Override
