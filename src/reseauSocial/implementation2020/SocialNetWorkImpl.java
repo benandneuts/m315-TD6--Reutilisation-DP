@@ -26,7 +26,7 @@ public class SocialNetWorkImpl<MemberInterface> implements SocialNetworkInterfac
 	@Override
 	public MemberInterface getMember(String identifier) {
 		for(MemberInterface m : members) {
-			if(((Member) m).getName() == identifier) {
+			if(identifier.equals(((Member) m).getName())) {
 				return m;
 			}
 		}
