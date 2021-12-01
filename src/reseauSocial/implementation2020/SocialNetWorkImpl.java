@@ -17,7 +17,7 @@ public class SocialNetWorkImpl<MemberInterface> implements SocialNetworkInterfac
 	String name;
 	GrapheSimple graphe;
 	
-	public SocialNetWorkImpl(String name) {
+	public SocialNetWorkImpl(String nme) {
 		this.name = name;
 		graphe = new GrapheSimple();
 		members = new ArrayList<>();
@@ -62,8 +62,20 @@ public class SocialNetWorkImpl<MemberInterface> implements SocialNetworkInterfac
 
 	@Override
 	public Set<MemberInterface> relatedToRank(MemberInterface member, int rank) {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<MemberInterface> l = new ArrayList<>();
+		ArrayList<MemberInterface> res = new ArrayList<>();
+		if(rank <= 1) {
+			return (Set<MemberInterface>) graphe.voisins((Member) member);
+		}
+		else {
+			for(int i = 0 ; i < graphe.voisins((Member) member).size(); i++) {
+				l.addAll((ArrayList<MemberInterface>) graphe.voisins((Member) member));
+			}
+			for(int i = 0; i < l.size(); i++) {
+				res.addAll(relatedToRank(l.get(i), rank-1));
+			}
+			return (Set<MemberInterface>) res;
+		}
 	}
 
 	@Override
