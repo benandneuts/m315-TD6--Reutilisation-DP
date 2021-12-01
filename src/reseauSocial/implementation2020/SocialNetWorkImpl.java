@@ -52,7 +52,6 @@ public class SocialNetWorkImpl<MemberInterface> implements SocialNetworkInterfac
 
 	@Override
 	public MemberInterface addMember(String identifier) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
@@ -69,8 +68,7 @@ public class SocialNetWorkImpl<MemberInterface> implements SocialNetworkInterfac
 
 	@Override
 	public int distance(MemberInterface member1, MemberInterface member2) {
-		// TODO Auto-generated method stub
-		return 0;
+		return graphe.cheminLePlusCourt((Member) member1, (Member) member2).size();
 	}
 
 }
