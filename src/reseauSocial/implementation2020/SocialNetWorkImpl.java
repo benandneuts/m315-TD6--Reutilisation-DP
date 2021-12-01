@@ -60,12 +60,14 @@ public class SocialNetWorkImpl<MemberInterface> implements SocialNetworkInterfac
 		graphe.ajouterArc((Member) member, (Member) friend, force.getValue());
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
+	
 	public Set<MemberInterface> relatedToRank(MemberInterface member, int rank) {
 		ArrayList<MemberInterface> l = new ArrayList<>();
 		ArrayList<MemberInterface> res = new ArrayList<>();
 		if(rank <= 1) {
-			return (Set<MemberInterface>) graphe.voisins((Member) member);
+			return ((Set<MemberInterface>) graphe.voisins((Member) member));
 		}
 		else {
 			for(int i = 0 ; i < graphe.voisins((Member) member).size(); i++) {
