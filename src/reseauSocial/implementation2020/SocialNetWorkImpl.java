@@ -13,21 +13,21 @@ import reseauSocial.core.SocialNetworkInterface;
 import reseauSocial.core.Strength;
 
 
-public class SocialNetWorkImpl<MemberInterface> implements SocialNetworkInterface<MemberInterface> {
+public class SocialNetWorkImpl implements SocialNetworkInterface<Member> {
 
-	ArrayList<MemberInterface> members;
+	ArrayList<Member> members;
 	String name;
 	GrapheSimple graphe;
 	
-	public SocialNetWorkImpl(String nme) {
+	public SocialNetWorkImpl(String name) {
 		this.name = name;
 		graphe = new GrapheSimple();
 		members = new ArrayList<>();
 	}
 	
 	@Override
-	public MemberInterface getMember(String identifier) {
-		for(MemberInterface m : members) {
+	public Member getMember(String identifier) {
+		for(Member m : members) {
 			if(identifier.equals(((Member) m).getName())) {
 				return m;
 			}
@@ -36,30 +36,30 @@ public class SocialNetWorkImpl<MemberInterface> implements SocialNetworkInterfac
 	}
 
 	@Override
-	public Collection<MemberInterface> getMembers() {
+	public Collection<Member> getMembers() {
 		return members;
 	}
 
 	@Override
-	public void addMember(MemberInterface membre) {
+	public void addMember(Member membre) {
 		members.add(membre);
 		graphe.ajouterSommet((Member) membre);
 	}
 
 	@Override
-	public MemberInterface addMember(String ident, FacebookGhostNetwork fg) {
-		MemberInterface m = (MemberInterface) new Member(ident);
+	public Member addMember(String ident, FacebookGhostNetwork fg) {
+		Member m = new Member(ident);
 		ArrayList<User> fam = fg.getUser(ident).getFamily();
 		ArrayList<User> frr = fg.getUser(ident).getFriends();
-		MemberInterface user;
+		Member user;
 		for(User u : fam) {
-			if((user = this.getMember(u.getName())) != (MemberInterface) null) {
+			if((user = this.getMember(u.getName())) != (Member) null) {
 				this.relate(Strength.HIGH, m, user);
 				this.relate(Strength.HIGH, user, m);
 			}
 		}
 		for(User u : frr) {
-			if((user = this.getMember(u.getName())) != (MemberInterface) null) {
+			if((user = this.getMember(u.getName())) != (Member) null) {
 				this.relate(Strength.MEDIUM, m, user);
 				this.relate(Strength.MEDIUM, user, m);
 			}
@@ -69,24 +69,24 @@ public class SocialNetWorkImpl<MemberInterface> implements SocialNetworkInterfac
 	}
 
 	@Override
-	public MemberInterface addMember(String identifier) {
+	public Member addMember(String identifier) {
 		return null;
 	}
 
 	@Override
-	public void relate(Strength force, MemberInterface member, MemberInterface friend) {
-		graphe.ajouterArc((Member) member, (Member) friend, force.getValue());
+	public void relate(Strength force, Member member, Member friend) {
+		graphe.ajouterArc(member, friend, force.getValue());
 	}
 
 	@Override
 	
-	public Set<MemberInterface> relatedToRank(MemberInterface member, int rank) {
-		return graphe.voisinsAuRang((Member) member, rank);
+	public Set<Member> relatedToRank(Member member, int rank) {
+		return graphe.voisinsAuRang(member, rank);
 	}
 
 	@Override
-	public int distance(MemberInterface member1, MemberInterface member2) {
-		return graphe.cheminLePlusCourt((Member) member1, (Member) member2).distance();
+	public int distance(Member member1, Member member2) {
+		return graphe.cheminLePlusCourt(member1, member2).distance();
 	}
 
 }
