@@ -49,6 +49,7 @@ public class SocialNetWorkImpl implements SocialNetworkInterface<Member> {
 	@Override
 	public Member addMember(String ident, FacebookGhostNetwork fg) {
 		Member m = new Member(ident);
+		this.addMember(m);
 		ArrayList<User> fam = fg.getUser(ident).getFamily();
 		ArrayList<User> frr = fg.getUser(ident).getFriends();
 		Member user;
@@ -64,7 +65,6 @@ public class SocialNetWorkImpl implements SocialNetworkInterface<Member> {
 				this.relate(Strength.MEDIUM, user, m);
 			}
 		}
-		
 		return m;
 	}
 
