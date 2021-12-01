@@ -3,7 +3,7 @@ package reseauSocial.implementation2020;
 import grapheX.Sommet;
 import reseauSocial.core.MemberInterface;
 
-public class Member extends Sommet implements MemberInterface{
+public class Member extends Sommet implements MemberInterface {
 
 	String localisation;
 	
