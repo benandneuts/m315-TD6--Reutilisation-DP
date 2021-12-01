@@ -1,6 +1,8 @@
 package facebookGhost;
 
 import java.util.ArrayList;
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 
 
 public class UserImpl implements User {
@@ -10,6 +12,7 @@ public class UserImpl implements User {
 	private String myProfile;
 	private User.AgeRange range;
 	private IdNameEntity homeTown;
+	private PropertyChangeSupport observables;
 	
 	
 	 class AgeRangeImpl implements User.AgeRange{
@@ -98,7 +101,10 @@ public class UserImpl implements User {
 
 	@Override
 	public void setLocation(String name) {
+		IdNameEntity ancien = this.getHometown();
 		homeTown = new IdNameEntityImpl(name,name) ;
+		Event e = new UserEvent(this);
+		observables.firePropertyChange("setLocation", ancien, e);
 	}
 	
 	
